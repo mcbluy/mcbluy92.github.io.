@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бім</title>
+    <style>
+        body {
+            font-family: 'Impact', sans-serif;
+            background-color: black;
+            color: white;
+            text-align: center;
+            margin: 2;
+            padding: 1;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        .logo {
+            max-width: 2000px;
+        }
+        .main-title {
+            font-size: 5em;
+            margin-top: 20px;
+        }
+        .subtitle {
+            font-size: 2em;
+            margin-top: 10px;
+        }
+        .center-text {
+            font-size: 1.5em;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .bottom-text {
+            font-size: 12px;
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+        }
+        #timer {
+            font-size: 40px;
+            font-weight: bold;
+            border: 5px solid white;
+            display: inline-block;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="logo.png" alt="Лого Бім" class="logo">
+        <img src="logo.png" alt="Лого Бім" class="logo">
+    </div>
+    <div class="main-title">БІМ.</div>
+    <div class="subtitle">Авангард українського спротиву</div>
+    <div class="center-text">Попереду український реванш. Чекай на нас Велика Україно!</div>
+    <div id="timer"></div>
+    <script>
+        function startCountdown(durationInSeconds) {
+            const timerElement = document.getElementById('timer');
+            let timeLeft = durationInSeconds;
+            
+            function updateTimer() {
+                const hours = Math.floor(timeLeft / 3600);
+                const minutes = Math.floor((timeLeft % 3600) / 60);
+                const seconds = timeLeft % 60;
+                timerElement.textContent = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    setTimeout(updateTimer, 1000);
+                } else {
+                    timerElement.textContent = "Час вийшов!";
+                }
+            }
+            
+            updateTimer();
+        }
+        
+        startCountdown(5263); // 1 година, 27 хвилин, 43 секунди
+    </script>
+</body>
+</html>
